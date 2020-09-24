@@ -10,6 +10,8 @@ namespace ClaimsProgram
     {
         static void Main(string[] args)
         {
+            ClaimsUI claimUI = new ClaimsUI();
+            claimUI.Run();
         }
     }
 }

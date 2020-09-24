@@ -10,23 +10,23 @@ namespace GoldBadgeChallenges
 {
     class CafeUI
     {
-        bool running = true;
         MenuRepo menu = new MenuRepo();
         public void Run()
         {
             Console.WriteLine("Welcome to the Komodo Cafe Console App!");
 
+            bool running = true;
             while(running)
             {
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine("Press any key to continue...");
+                Console.WriteLine("\nPress any key to continue...");
                 Console.ReadKey();
                 Console.Clear();
-                Menu();
+                running = Menu(running);
             }
         }
 
-        private void Menu()
+        private bool Menu(bool running)
         {
             Console.WriteLine("Please make a selection:");
             Console.WriteLine("" +
@@ -49,12 +49,15 @@ namespace GoldBadgeChallenges
                     break;
                 case "4":
                     ExitApp();
+                    running = false;
                     break;
                 default:
                     Console.Clear();
                     Console.WriteLine("I did not understand that command. Please enter a valid selection.");
                     break;
             }
+
+            return running;
         }
 
         private void ExitApp()
@@ -62,7 +65,6 @@ namespace GoldBadgeChallenges
             Console.Clear();
             Console.WriteLine("Goodbye!");
             Console.ReadKey();
-            running = false;
         }
 
         private void ViewMenuItems()

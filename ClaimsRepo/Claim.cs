@@ -24,9 +24,8 @@ namespace ClaimsRepo
         public bool IsValid { get; }
 
 
-        public Claim(int id, TypeOfClaim claimType, string desc, decimal amt, DateTime dateIncident, DateTime dateClaim)
+        public Claim(TypeOfClaim claimType, string desc, decimal amt, DateTime dateIncident, DateTime dateClaim)
         {
-            ClaimId = id;
             ClaimType = claimType;
             Description = desc;
             ClaimAmount = amt;

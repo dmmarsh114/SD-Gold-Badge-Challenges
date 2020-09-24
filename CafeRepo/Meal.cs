@@ -6,21 +6,6 @@ using System.Threading.Tasks;
 
 namespace CafeRepo
 {
-    public enum Ingredients
-    {
-        Salt = 1,
-        Seawater,
-        Sugar,
-        Flour,
-        Seaweed,
-        Lobster_Shell,
-        Cinnamon,
-        Thyme,
-        Egg,
-        Milk,
-        Gin
-    }
-
     public class Meal
     {
         public string Name { get; set; }

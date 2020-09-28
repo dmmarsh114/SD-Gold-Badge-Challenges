@@ -1,10 +1,10 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace GreetingTests
+namespace ClaimsTests
 {
     [TestClass]
-    public class UnitTest1
+    public class ClaimsTests
     {
         [TestMethod]
         public void TestMethod1()

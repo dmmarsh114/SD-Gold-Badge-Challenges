@@ -12,12 +12,14 @@ namespace GreetingRepo
         Past,
         Potential
     }
-    public class Customer
-    {
+
+    public class Customer 
+    { 
+
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public CustomerType TypeOfCustomer { get; set; }
-        public string Email { get; }
+        public string Email { get; set; }
 
         public Customer(string fname, string lname, CustomerType type)
         {
@@ -27,9 +29,9 @@ namespace GreetingRepo
             Email = CreateEmail(TypeOfCustomer);
         }
 
-        private string CreateEmail(CustomerType type)
+        public static string CreateEmail(CustomerType type)
         {
-            switch (TypeOfCustomer)
+            switch (type)
             {
                 case CustomerType.Current:
                     return "We have discounts on Helicopter Insurance!";

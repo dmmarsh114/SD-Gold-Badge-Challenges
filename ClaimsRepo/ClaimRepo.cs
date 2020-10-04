@@ -46,14 +46,14 @@ namespace ClaimsRepo
         {
             TypeOfClaim c1ClaimType = TypeOfClaim.Car;
             string c1Description = "Accident on 829";
-            decimal c1ClaimAmount = 400M;
+            decimal c1ClaimAmount = 400.00M;
             DateTime c1DateOfIncident = new DateTime(2020, 09, 01);
             DateTime c1DateOfClaim = new DateTime(2020, 09, 10);
             Claim c1 = new Claim(c1ClaimType, c1Description, c1ClaimAmount, c1DateOfIncident, c1DateOfClaim);
             NewClaim(c1);
 
             TypeOfClaim c2ClaimType = TypeOfClaim.Theft;
-            string c2Description = "Someone stole my gizmo!";
+            string c2Description = "House theft";
             decimal c2ClaimAmount = 1127.59M;
             DateTime c2DateOfIncident = new DateTime(2020, 09, 01);
             DateTime c2DateOfClaim = new DateTime(2020, 10, 04);

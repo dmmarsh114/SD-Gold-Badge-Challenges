@@ -68,13 +68,12 @@ namespace ClaimsProgram
             return running;
         }
 
-        // TODO - Make the table actually readable
         private void ViewClaims()
         {
             List<ClaimsRepo.Claim> allClaims = cRepo.ViewAllClaims();
 
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("ID\tType\tDescription\t  Amount\tDate Of Incident\tDate Of Claim\tIs Valid");
+            Console.WriteLine("ID\tType\tDescription\t\tAmount\t\tDate Of Incident\tDate Of Claim\tIs Valid");
             Console.ForegroundColor = ConsoleColor.White;
 
             foreach (ClaimsRepo.Claim c in allClaims)
@@ -83,9 +82,9 @@ namespace ClaimsProgram
                 Console.WriteLine(
                     $"{c.ClaimId}\t" +
                     $"{c.ClaimType}\t" +
-                    $"{c.Description}\t  " +
-                    $"{"$" + c.ClaimAmount}\t\t" +
-                    $"{c.DateOfIncident.ToShortDateString()}\t\t" +
+                    $"{c.Description}\t\t" +
+                    $"${c.ClaimAmount}\t" +
+                    $"{c.DateOfIncident.ToShortDateString()}\t" +
                     $"{c.DateOfClaim.ToShortDateString()}\t" +
                     $"{c.IsValid}\t");
             }
@@ -97,6 +96,7 @@ namespace ClaimsProgram
             Console.WriteLine($"Your next claim is:\n" +
                 $"Id: {claimToHandle.ClaimId}\n" +
                 $"Type: {claimToHandle.ClaimType}\n" +
+                $"Description: {claimToHandle.Description}\n" +
                 $"Amount: {claimToHandle.ClaimAmount}\n" +
                 $"Date of Incident: {claimToHandle.DateOfIncident}\n" +
                 $"Date of Claim: {claimToHandle.DateOfClaim}\n" +

@@ -8,9 +8,9 @@ namespace ClaimsRepo
 {
     public class ClaimRepo
     {
-        List<Claim> _claims = new List<Claim>();
+        Queue<Claim> _claims = new Queue<Claim>();
 
-        public List<Claim> ViewAllClaims()
+        public Queue<Claim> ViewAllClaims()
         {
             return _claims;
         }
@@ -19,14 +19,14 @@ namespace ClaimsRepo
         {
             Claim claimToHandle = GetClaimById(claimId);
             if (claimToHandle == null) { return false; }
-            _claims.Remove(claimToHandle);
+            _claims.Dequeue();
             return true;
         }
 
         public void NewClaim(Claim newClaim)
         {
             newClaim.ClaimId = _claims.Count + 1;
-            _claims.Add(newClaim);
+            _claims.Enqueue(newClaim);
         }
 
         // Helper Functions
@@ -45,7 +45,7 @@ namespace ClaimsRepo
         public void PopulateClaims()
         {
             TypeOfClaim c1ClaimType = TypeOfClaim.Car;
-            string c1Description = "Accident on 829";
+            string c1Description = "Car accident";
             decimal c1ClaimAmount = 400.00M;
             DateTime c1DateOfIncident = new DateTime(2020, 09, 01);
             DateTime c1DateOfClaim = new DateTime(2020, 09, 10);

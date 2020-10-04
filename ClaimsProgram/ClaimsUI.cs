@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Claims;
+//using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -70,21 +70,20 @@ namespace ClaimsProgram
 
         private void ViewClaims()
         {
-            List<ClaimsRepo.Claim> allClaims = cRepo.ViewAllClaims();
+            Queue<Claim> allClaims = cRepo.ViewAllClaims();
 
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("ID\tType\tDescription\t\tAmount\t\tDate Of Incident\tDate Of Claim\tIs Valid");
             Console.ForegroundColor = ConsoleColor.White;
 
-            foreach (ClaimsRepo.Claim c in allClaims)
+            foreach (Claim c in allClaims)
             {
-                // Note to self: I hate hard-coding all these spaces
                 Console.WriteLine(
                     $"{c.ClaimId}\t" +
                     $"{c.ClaimType}\t" +
                     $"{c.Description}\t\t" +
                     $"${c.ClaimAmount}\t" +
-                    $"{c.DateOfIncident.ToShortDateString()}\t" +
+                    $"{c.DateOfIncident.ToShortDateString()}\t\t" +
                     $"{c.DateOfClaim.ToShortDateString()}\t" +
                     $"{c.IsValid}\t");
             }
@@ -92,7 +91,7 @@ namespace ClaimsProgram
         
         private void HandleNextClaim()
         {
-            ClaimsRepo.Claim claimToHandle = cRepo.ViewAllClaims()[0];
+            Claim claimToHandle = cRepo.ViewAllClaims().Peek();
             Console.WriteLine($"Your next claim is:\n" +
                 $"Id: {claimToHandle.ClaimId}\n" +
                 $"Type: {claimToHandle.ClaimType}\n" +
@@ -122,7 +121,7 @@ namespace ClaimsProgram
             }
         }
 
-        private void AttemptToHandleClaim(ClaimsRepo.Claim claimToHandle)
+        private void AttemptToHandleClaim(Claim claimToHandle)
         {
             if (cRepo.HandleClaim(claimToHandle.ClaimId))
             {
@@ -217,7 +216,7 @@ namespace ClaimsProgram
             }
 
             Console.Clear();
-            ClaimsRepo.Claim claimToAdd = new ClaimsRepo.Claim(claimType, desc, amt, dateInc, dateClaim);
+            Claim claimToAdd = new Claim(claimType, desc, amt, dateInc, dateClaim);
             cRepo.NewClaim(claimToAdd);
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Claim Added!");

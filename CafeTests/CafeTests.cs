@@ -31,9 +31,17 @@ namespace CafeTests
         [TestMethod]
         public void DeleteMealTest()
         {
-            CreateMealTest();
+            Meal mealTest = new Meal();
+            mealTest.Name = $"Test Meal 0";
+            mealTest.Description = "Test meal";
+            List<string> testIngredients = new List<string> { "Salt", "Sugar", "Flour" };
+            mealTest.Ingredients = testIngredients;
+            mealTest.Price = 2.00M;
+
+            menuTest.CreateMeal(mealTest);
+
             menuTest.DeleteMeal("Test Meal 0");
-            Assert.AreEqual(2, menuTest.GetAllMeals().Count);
+            Assert.AreEqual(0, menuTest.GetAllMeals().Count);
         }
     }
 }

@@ -55,7 +55,7 @@ namespace Badges
                     break;
                 case "5":
                     Console.WriteLine("Goodbye!");
-                    Console.Clear();
+                    Console.ReadKey();
                     running = false;
                     break;
                 default:
